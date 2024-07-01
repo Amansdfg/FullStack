@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+<!--    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">-->
+    <link href="/output.css" rel="stylesheet">
+</head>
+<body>
+<div th:include="navbar.html"></div>
+<div class="d-flex justify-content-center" style="margin-top: 20px">
+    <div class="row row-cols-1 row-cols-md-3 g-4 w-75">
+        <div class="col" th:each="searchUni:${search}">
+            <a th:href="@{'#'}" class="link-offset-2 link-underline link-underline-opacity-0">
+            <div class="fs-1 text-center">Result of request</div>
+            <div class="card h-100">
+                <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTl-aSIpvSnnSGTMx1Qz6bW7jNYA8a7bMu42g&usqp=CAU" class="card-img-top" alt="...">t
+                <div class="card-body">
+                    <h5 class="card-title" th:text="${searchUni.name}"></h5>
+                    <p class="card-text" th:text="${searchUni.text}"></p>
+                </div>
+            </div>
+            </a>
+        </div>
+    </div>
+</div>
+<div class="d-flex justify-content-center" style="margin-top: 200px">
+    <video width="500" height="300" autoplay controls loop>
+        <source src="/videoAman.mp4" type="video/mp4">
+        <source src="/videoAman.mp4" type="video/ogg">
+    </video>
+</div>
+<div class=" fs-1 text-center" style="margin-top: 50px"> Universities</div>
+<div class="d-flex justify-content-center" style="margin-top: 50px">
+    <div class="row row-cols-1 row-cols-md-3 g-4 w-75">
+        <div class="col" th:each="university:${universities}">
+            <a th:href="@{'/uni/details?name='+${university.name}}" class="link-offset-2 link-underline link-underline-opacity-0">
+            <div class="card h-100">
+                <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTl-aSIpvSnnSGTMx1Qz6bW7jNYA8a7bMu42g&usqp=CAU" class="card-img-top" alt="...">
+                <div class="card-body">
+                    <h5 class="card-title" th:text="${university.name}"></h5>
+                    <p class="card-text" th:text="${university.text}"></p>
+                </div>
+            </div>
+            </a>
+        </div>
+    </div>
+</div>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
+</body>
+</html>
